@@ -1,0 +1,73 @@
+.homeSearch {
+  border: 1px solid #b3b3b3;
+  outline: none;
+  width: 450px;
+  height: 80px;
+  border-radius: 5px;
+  background: transparent;
+  color: #fff;
+  font-size: 25px;
+  backdrop-filter: blur(10px);
+  padding-left: 10px;
+  text-align: center;
+
+  &:focus {
+    width: 550px;
+    transition: 0.8s;
+    letter-spacing: 7px;
+  }
+}
+
+.weatherDashboardSearch {
+  height: 30px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  outline: none;  
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.weatherDashboardSearchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+}
+
+.searchIcon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  fill: #bfbfbf;
+}
+
+.searchIcon:hover {
+  fill: #fff;
+  transition: 0.5s;
+}
+
+
+.errorContainer {
+  min-height: 20px;
+  margin: 10px 0;
+}
+
+.errorMessage {
+  color: #ffd740;
+  font-weight: 400;
+  animation: showError 0.4s ease-out;
+}
+
+@keyframes showError {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,7 @@
+.weatherDetailsContainer {
+  width: 80%;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}

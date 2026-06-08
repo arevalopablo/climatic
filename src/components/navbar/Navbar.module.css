@@ -1,0 +1,21 @@
+.navbarContainer {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.navbarLinks {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 30px;
+  font-weight: 500;
+  display: inline-block;
+  transition: .3s;
+  }
+
+  .navbarLinks.isActive {
+    transform: scale(1.1);
+    color: #ffff00;
+  }
+
+

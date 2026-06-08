@@ -1,0 +1,25 @@
+.weatherCurrent {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  width: 50%;
+  color: #fff;
+  padding:20px 20px 30px 20px;
+}
+
+.weatherCurrent h2 {
+  font-size: 40px;
+  font-weight: normal;
+}
+
+.weatherCurrent h3 {
+  font-weight: 400;
+}
+
+.weatherDetails {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 40px;
+  width: 50%;
+}

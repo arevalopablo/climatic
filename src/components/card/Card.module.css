@@ -1,0 +1,26 @@
+.dailyCard {
+  padding: 12px;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  p {
+    font-size: 18px;
+  }
+}
+
+.cardIcon {
+  font-size: 40px;
+}
+
+.cardDay {
+  background: linear-gradient(180deg, #0288d1 0%, #26c6da 100%);
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+.cardNight {
+  background: linear-gradient(135deg, #311b92 0%, #120640 100%);
+  box-shadow: 0 10px 30px rgba(49, 27, 146, 0.4);
+}
+

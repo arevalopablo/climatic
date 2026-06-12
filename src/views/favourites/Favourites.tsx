@@ -12,7 +12,7 @@ const Favourites = () => {
   return (
     <Grid container className={styles.favouritesContainer}>
       {!favourites.length ? (
-        <Typography variant="h4">Not favourites yet</Typography>
+        <Typography variant="h4">Aun no hay favoritos</Typography>
       ) : (
         <>
           <DropDownFilter

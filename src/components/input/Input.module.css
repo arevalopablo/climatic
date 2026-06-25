@@ -8,7 +8,6 @@
   color: #fff;
   font-size: 25px;
   backdrop-filter: blur(10px);
-  padding-left: 10px;
   text-align: center;
 
   &:focus {

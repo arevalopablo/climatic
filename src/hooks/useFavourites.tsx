@@ -13,8 +13,8 @@ const useFavourites = () => {
   const [sortBy, setSortBy] = useState<string>("");
 
   const addToFavourites = (favCity: Favourites) => {
-    const addedFav = favourites?.some((added) => added.id === favCity.id);
-    if (!addedFav) {
+    const isAddedFav = favourites?.some((added) => added.id === favCity.id);
+    if (!isAddedFav) {
       setFavourites([...favourites, favCity]);
     }
   };
@@ -24,9 +24,9 @@ const useFavourites = () => {
     setFavourites(filtered);
   };
 
-  const handleSortChange = (e: SelectChangeEvent<string>) => {
-    setSortBy(e.target.value);
-    sortFavourites(e.target.value)
+  const handleSortChange = (e: SelectChangeEvent<string | number>) => {
+    setSortBy(e.target.value.toString());
+    sortFavourites(e.target.value.toString())
   };
 
   const sortFavourites = (option: string) => {

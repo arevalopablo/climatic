@@ -6,22 +6,27 @@ import {
   Select,
   type SelectChangeEvent,
 } from "@mui/material";
+import type { WeatherData } from "../../hooks/useForm";
 
 interface DropDownProps {
+  width: string,
+  name: string,
   label: string;
-  value: string;
-  options: string[];
-  onChange: (e: SelectChangeEvent<string>) => void;
+  value: string | number,
+  options: string[] | WeatherData[];
+  onChange: (e: SelectChangeEvent<string | number>) => void;
 }
 
 const DropDownFilter = (props: DropDownProps) => {
-  const { label, value, options, onChange } = props;
+  const { width, label, name, value, options, onChange } = props;
+
+  
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", mb: '20px' }}>
       <FormControl
         variant="standard"
         sx={{
-          width: "120px",
+          width: width,
           "& .MuiInputLabel-root": {
             color: "rgba(255, 255, 255, 0.7)",
             "&.Mui-focused": { color: "#fff" },
@@ -31,8 +36,9 @@ const DropDownFilter = (props: DropDownProps) => {
           },
         }}
       >
-        <InputLabel id="filtro">{label}</InputLabel>
+        <InputLabel id={label}>{label}</InputLabel>
         <Select
+          name={name}
           label={label}
           value={value}
           onChange={onChange}
@@ -53,11 +59,16 @@ const DropDownFilter = (props: DropDownProps) => {
             },
           }}
         >
-          {options.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
+          {options.map((option) => {
+            const isString = typeof option === "string";
+            const title = isString ? option : option.id;
+            const data = isString ? title : `${option.name}${option.admin1 ? `, ${option.admin1}` : ""}, ${option.country}`
+            return (
+              <MenuItem key={title} value={title}>
+                {data}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
     </Box>

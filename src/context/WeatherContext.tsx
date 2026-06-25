@@ -11,10 +11,13 @@ interface WeatherContextProps {
   showError: string;
   favourites: Favourites[];
   sortBy: string;
+  selectedCity: number | string,
+  cityOptions: WeatherData[]
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleChangeEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   handleSearch: () => void;
-  handleSortChange: (e: SelectChangeEvent<string>) => void;
+  handleSortChange: (e: SelectChangeEvent<string | number>) => void;
+  handleCitySelected: (e: SelectChangeEvent<string | number>) => void;
+  handleCityChange: (e: SelectChangeEvent<string | number>) => void;
   addToFavourites: (favCity: Favourites) => void;
   removeFromFavourites: (favCity: Favourites["id"]) => void;
   handleLocationSearch: () => void;

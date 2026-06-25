@@ -17,7 +17,9 @@ const Favourites = () => {
         <>
           <DropDownFilter
             label="Filtrar por"
+            width="120px"
             value={sortBy}
+            name="filtros"
             onChange={handleSortChange}
             options={["Ciudad", "País", "Máx Temp", "Mín Temp"]}
           />

@@ -5,17 +5,20 @@ import { useWeatherContext } from "../../context/WeatherContext";
 import { getHomeBackground } from "../../helpers/weather";
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
+import DropDownFilter from "../../components/dropdownFilter/DropDownFilter";
 
 const Home = () => {
-  const [bg] = useState<string>(getHomeBackground);
+  const [ bg ] = useState<string>(getHomeBackground);
   const {
     loading,
     isSearching,
     cityName,
-    handleChange,
-    handleChangeEnter,
     showError,
+    selectedCity,
+    cityOptions,
+    handleChange,
     handleLocationSearch,
+    handleCitySelected,
   } = useWeatherContext();
 
   useEffect(() => {
@@ -36,6 +39,8 @@ const Home = () => {
         {showLoader ? (
           <Loader />
         ) : (
+          <>
+          
           <Input
             id="city"
             type="text"
@@ -43,10 +48,20 @@ const Home = () => {
             placeholder="Buscar clima de tu ciudad..."
             value={cityName}
             onChange={handleChange}
-            onKeyDown={handleChangeEnter}
             showError={showError}
             className={"homeSearch"}
           />
+          {!!cityOptions.length && (
+            <DropDownFilter
+              name="ciudades"
+              value={selectedCity}
+              width="450px"
+              label={cityOptions[0]?.name}
+              options={cityOptions}
+              onChange={handleCitySelected}
+            />
+          )}
+          </>
         )}
       </Grid>
     </Grid>

@@ -1,26 +1,44 @@
-import { Box } from "@mui/material";
+import { Box, type SelectChangeEvent } from "@mui/material";
 import styles from "./WeatherDetails.module.css";
 import Input from "../../../components/input/Input";
 import WeatherExtended from "../../../components/WeatherExtended";
-import DailyWeather, { type DailyWeatherConfig } from "../../../components/DailyWeather";
+import DailyWeather, {
+  type DailyWeatherConfig,
+} from "../../../components/DailyWeather";
 import SearchIcon from "../../../shared/SearchIcon";
 import type { CurrentWeather } from "../../../helpers/weather";
+import type { WeatherData } from "../../../hooks/useForm";
+import DropDownFilter from "../../../components/dropdownFilter/DropDownFilter";
 
 interface WeatherDetailsProps {
   cityName: string;
+  cityOptions: WeatherData[];
   showError: string;
+  selectedCity: number | string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  handleCitySelected: (e: SelectChangeEvent<string | number>) => void;
   onClick: () => void;
   name: string;
-  currentInfo: CurrentWeather[]; 
+  currentInfo: CurrentWeather[];
   dailyDataExtended: DailyWeatherConfig[];
   is_day: number;
 }
 
 const WeatherDetails = (props: WeatherDetailsProps) => {
-  const {cityName, currentInfo, dailyDataExtended, is_day,name, onChange, onClick, onKeyDown, showError} = props
-  
+  const {
+    cityName,
+    cityOptions,
+    selectedCity,
+    currentInfo,
+    dailyDataExtended,
+    is_day,
+    name,
+    handleCitySelected,
+    onChange,
+    onClick,
+    showError,
+  } = props;
+
   return (
     <Box className={styles.weatherDetailsContainer}>
       <Input
@@ -30,13 +48,19 @@ const WeatherDetails = (props: WeatherDetailsProps) => {
         Icon={SearchIcon}
         showError={showError}
         onChange={onChange}
-        onKeyDown={onKeyDown}
         onClick={onClick}
       />
-      <WeatherExtended
-        title={name}
-        currentData={currentInfo}
-      />
+      {!!cityOptions.length && (
+        <DropDownFilter
+          name="ciudades"
+          value={selectedCity}
+          width="100%"
+          label={cityOptions[0]?.name}
+          options={cityOptions}
+          onChange={handleCitySelected}
+        />
+      )}
+      <WeatherExtended title={name} currentData={currentInfo} />
       <DailyWeather dailyWeather={dailyDataExtended} is_day={is_day} />
     </Box>
   );
